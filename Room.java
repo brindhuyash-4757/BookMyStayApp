@@ -67,6 +67,26 @@ public class Room {
         this.available = available;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getNumberOfBeds() {
+        return numberOfBeds;
+    }
+
+    public int getSquareFeet() {
+        return squareFeet;
+    }
+
+    public double getPricePerNight() {
+        return pricePerNight;
+    }
+
     /** Displays room details. */
     public void displayRoomDetails() {
         System.out.println("Room ID: " + id
