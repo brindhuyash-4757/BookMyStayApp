@@ -29,6 +29,9 @@ public class Room {
     /** Room id for inventory demo. */
     protected int id;
 
+    /** Indicates if the room is currently available for booking. */
+    protected boolean available;
+
     /**
      * Constructor used by child classes to initialize common room attributes.
      *
@@ -39,11 +42,29 @@ public class Room {
      * @param pricePerNight cost per night
      */
     public Room(int id, String type, int numberOfBeds, int squareFeet, double pricePerNight) {
+        this(id, type, numberOfBeds, squareFeet, pricePerNight, true);
+    }
+
+    /**
+     * Constructor with explicit availability state.
+     */
+    public Room(int id, String type, int numberOfBeds, int squareFeet, double pricePerNight, boolean available) {
         this.id = id;
         this.type = type;
         this.numberOfBeds = numberOfBeds;
         this.squareFeet = squareFeet;
         this.pricePerNight = pricePerNight;
+        this.available = available;
+    }
+
+    /** Checks availability. */
+    public boolean isAvailable() {
+        return available;
+    }
+
+    /** Set availability. */
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     /** Displays room details. */
@@ -52,6 +73,7 @@ public class Room {
                 + ", Type: " + type
                 + ", Beds: " + numberOfBeds
                 + ", Size: " + squareFeet + " sqft"
-                + ", Rate: $" + pricePerNight + " per night");
+                + ", Rate: $" + pricePerNight + " per night"
+                + ", Available: " + (available ? "Yes" : "No"));
     }
 }
