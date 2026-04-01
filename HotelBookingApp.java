@@ -1,31 +1,36 @@
-public class HotelBookingApp {
-    /**
- * The main entry point for the Hotel Booking application.
- * This class acts as a container for application behavior and 
- * marks the logical boundary of the program.
+/**
+ * ==========================================================
+ * MAIN CLASS - HotelBookingApp
+ * ==========================================================
  *
- * @author Your Name
- * @version 1.0
+ * Use Case 2: Basic Room Types & Static Availability
+ *
+ * Description:
+ * This class is the application entry point and a simple demo
+ * of basic room type representation and availability.
+ *
+ * @version 2.1
  */
 public class HotelBookingApp {
 
-    /**
-     * The main method acts as the entry point of the standalone Java application.
-     * The JVM specifically looks for this method signature to begin execution.
-     * * @param args Command line arguments passed to the application.
-     */
     public static void main(String[] args) {
-        
-        // Execution proceeds top to bottom (Application Flow)
-        
-        // Using System.out.println() to send text output to the console
         System.out.println("****************************************");
         System.out.println("  Welcome to the Hotel Booking System!  ");
         System.out.println("****************************************");
         System.out.println("Application Name: Hotel Booking App");
-        System.out.println("Version: v1.0");
-        
-        // The application naturally terminates here when it reaches the end of the main method
+        System.out.println("Version: v2.1");
+
+        // Configure and show static room inventory for use case 2.
+        Room single = new Room(1, "Single", 1, 180, 80.0);
+        Room doubleRoom = new Room(2, "Double", 2, 275, 120.0);
+        Room deluxe = new Room(3, "Deluxe", 2, 350, 200.0);
+
+        System.out.println("\nRoom catalog (basic types & static availability):");
+        single.displayRoomDetails();
+        doubleRoom.displayRoomDetails();
+        deluxe.displayRoomDetails();
+
+        System.out.println("\nUse Case 2 completed: room types displayed.");
     }
 }
-}
+
