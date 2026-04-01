@@ -68,13 +68,17 @@ public class RoomInventory {
     public List<Room> searchRooms(String type, int minimumBeds) {
         List<Room> result = new ArrayList<>();
         for (Room room : rooms) {
-            boolean typeMatch = type == null || type.isBlank() || room.type.equalsIgnoreCase(type);
-            boolean bedsMatch = room.numberOfBeds >= minimumBeds;
+            boolean typeMatch = type == null || type.isBlank() || room.getType().equalsIgnoreCase(type);
+            boolean bedsMatch = room.getNumberOfBeds() >= minimumBeds;
             if (typeMatch && bedsMatch) {
                 result.add(room);
             }
         }
         return Collections.unmodifiableList(result);
+    }
+
+    public List<Room> getAllRooms() {
+        return Collections.unmodifiableList(rooms);
     }
 
     public void displayInventory() {
