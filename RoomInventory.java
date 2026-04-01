@@ -45,13 +45,42 @@ public class RoomInventory {
         return null;
     }
 
-    public List<Room> getAllRooms() {
-        return Collections.unmodifiableList(rooms);
+    public int getAvailableRoomCount() {
+        int count = 0;
+        for (Room room : rooms) {
+            if (room.isAvailable()) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public List<Room> getAvailableRooms() {
+        List<Room> availableRooms = new ArrayList<>();
+        for (Room room : rooms) {
+            if (room.isAvailable()) {
+                availableRooms.add(room);
+            }
+        }
+        return Collections.unmodifiableList(availableRooms);
+    }
+
+    public List<Room> searchRooms(String type, int minimumBeds) {
+        List<Room> result = new ArrayList<>();
+        for (Room room : rooms) {
+            boolean typeMatch = type == null || type.isBlank() || room.type.equalsIgnoreCase(type);
+            boolean bedsMatch = room.numberOfBeds >= minimumBeds;
+            if (typeMatch && bedsMatch) {
+                result.add(room);
+            }
+        }
+        return Collections.unmodifiableList(result);
     }
 
     public void displayInventory() {
         System.out.println("\nRoom Inventory status");
         System.out.println("Total rooms: " + getTotalRooms());
+        System.out.println("Available rooms: " + getAvailableRoomCount());
         for (Room room : rooms) {
             room.displayRoomDetails();
         }
