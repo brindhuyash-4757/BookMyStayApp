@@ -1,0 +1,3 @@
+1,Single,1,180,80.0,true
+2,Double,2,275,120.0,true
+3,Suite,3,530,350.0,true
